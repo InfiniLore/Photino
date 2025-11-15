@@ -569,7 +569,32 @@ void Photino::Close()
 
 void Photino::Focus()
 {
-    // TODO make this
+    if (!_hWnd) return;
+
+    // If minimized, restore first
+    if (IsIconic(_hWnd)) ShowWindow(_hWnd, SW_RESTORE);
+
+    // Try to request foreground rights
+    AllowSetForegroundWindow(ASFW_ANY);
+
+    // Bring the window to the top and set focus/activation
+    HWND hwndForeground = GetForegroundWindow();
+    const DWORD fgThread = hwndForeground ? GetWindowThreadProcessId(hwndForeground, nullptr) : 0;
+    const DWORD thisThread = GetCurrentThreadId();
+
+    // Temporarily attach thread inputs to improve the chances of success
+    if (fgThread && fgThread != thisThread) AttachThreadInput(fgThread, thisThread, TRUE);
+
+    ShowWindow(_hWnd, SW_SHOW);
+    SetForegroundWindow(_hWnd);
+    BringWindowToTop(_hWnd);
+    SetActiveWindow(_hWnd);
+    SetFocus(_hWnd);
+
+    if (fgThread && fgThread != thisThread) AttachThreadInput(fgThread, thisThread, FALSE);
+
+    // Also move focus to the embedded WebView2, if available
+    FocusWebView2();
 }
 
 
