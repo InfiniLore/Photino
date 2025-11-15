@@ -213,6 +213,12 @@ public sealed class InfiniFrameWindow(
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     public bool Maximized => InvokeUtilities.InvokeAndReturn<bool>(this, InfiniFrameNative.GetMaximized);
 
+    /// <summary>
+    /// Gets whether the native window is currently within focus
+    /// </summary>
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    public bool Focused => InvokeUtilities.InvokeAndReturn<bool>(this, InfiniFrameNative.GetFocused);
+    
     ///<summary>Gets or set the maximum size of the native window in pixels.</summary>
     public Size MaxSize {
         get => new(MaxWidth, MaxHeight);

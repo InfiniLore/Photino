@@ -889,4 +889,9 @@ public static class InfiniWindowExtensions {
         window.Invoke(() => InfiniFrameNative.SetZoomEnabled(window.InstanceHandle, zoomEnabled));
         return window;
     }
+
+    public static T SetFocused<T>(this T window) where T : class, IInfiniFrameWindow {
+        window.Invoke(() => InfiniFrameNative.SetFocused(window.InstanceHandle));
+        return window;
+    }
 }
