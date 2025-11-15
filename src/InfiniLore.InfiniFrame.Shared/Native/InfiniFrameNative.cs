@@ -211,6 +211,9 @@ public static partial class InfiniFrameNative {
 
     [LibraryImport(DllName, EntryPoint = Photino_WaitForExit, SetLastError = true), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     internal static partial void WaitForExit(IntPtr instance);
+
+    [LibraryImport(DllName, EntryPoint = InfiniFrame_Focus, SetLastError = true), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    internal static partial void Focus(IntPtr instance);
     #endregion
 
     #region Dialog

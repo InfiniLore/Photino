@@ -250,6 +250,7 @@ public:
 	void Center();
 	void ClearBrowserAutoFill();
 	void Close();
+    void Focus();
 
 	void GetTransparentEnabled(bool *enabled);
 	void GetContextMenuEnabled(bool *enabled);

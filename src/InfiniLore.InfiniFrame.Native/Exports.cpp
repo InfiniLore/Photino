@@ -350,6 +350,11 @@ extern "C"
 		instance->Invoke(callback);
 	}
 
+	EXPORTED void InfiniFrame_Focus(Photino* instance)
+	{
+        instance->Focus();
+	}
+
     EXPORTED void InfiniWindowTests_NativeParametersReturnAsIs(const PhotinoInitParams* params, PhotinoInitParams** new_params)
 	{
         *new_params = new PhotinoInitParams();

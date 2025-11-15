@@ -567,6 +567,11 @@ void Photino::Close()
 	PostMessage(_hWnd, WM_CLOSE, NULL, NULL);
 }
 
+void Photino::Focus()
+{
+    // TODO make this
+}
+
 
 void Photino::GetTransparentEnabled(bool* enabled)
 {
