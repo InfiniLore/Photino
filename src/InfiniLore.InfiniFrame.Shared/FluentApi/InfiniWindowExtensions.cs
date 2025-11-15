@@ -890,8 +890,8 @@ public static class InfiniWindowExtensions {
         return window;
     }
 
-    public static T Focus<T>(this T window) where T : class, IInfiniFrameWindow {
-        window.Invoke(() => InfiniFrameNative.Focus(window.InstanceHandle));
+    public static T SetFocused<T>(this T window) where T : class, IInfiniFrameWindow {
+        window.Invoke(() => InfiniFrameNative.SetFocused(window.InstanceHandle));
         return window;
     }
 }

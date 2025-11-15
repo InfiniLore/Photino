@@ -339,11 +339,6 @@ void Photino::Close()
 	gtk_window_close(GTK_WINDOW(_window));
 }
 
-void Photino::Focus()
-{
-	gtk_window_present(GTK_WINDOW(_window));
-}
-
 void Photino::GetTransparentEnabled(bool *enabled)
 {
 	*enabled = _transparentEnabled;
@@ -505,6 +500,10 @@ void Photino::GetZoom(int *zoom)
 	rawValue = webkit_web_view_get_zoom_level(WEBKIT_WEB_VIEW(_webview));
 	rawValue = (rawValue * 100.0) + 0.5;
 	*zoom = (int)rawValue;
+}
+
+void Photino::GetFocused(bool *isFocused) {
+	*isFocused = gtk_window_is_active(GTK_WINDOW(_window));
 }
 
 AutoString Photino::GetIconFileName() const
@@ -719,6 +718,11 @@ void Photino::SetZoom(const int zoom)
 {
 	double newZoom = zoom / 100.0;
 	webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(_webview), newZoom);
+}
+
+void Photino::SetFocused()
+{
+    gtk_window_present(GTK_WINDOW(_window));
 }
 
 void Photino::SetTransparentEnabled(const bool enabled)

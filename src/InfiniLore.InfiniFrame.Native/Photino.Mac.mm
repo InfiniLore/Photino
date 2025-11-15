@@ -362,25 +362,6 @@ void Photino::Close()
     }
 }
 
-void Photino::Focus()
-{
-     if (!_window) return;
-
-    // Bring the application to the foreground
-    [NSApp activateIgnoringOtherApps:YES];
-
-    // Ensure the window becomes the key window
-    [_window makeKeyAndOrderFront:_window];
-
-    // If for some reason it still doesn't get key (borderless windows),
-    // force it to become key.
-    if (![_window isKeyWindow])
-    {
-        [_window orderFrontRegardless];
-        [_window makeKeyWindow];
-    }
-}
-
 void Photino::GetTransparentEnabled(bool* enabled)
 {
     //! Not implemented (supported?) on macOS
@@ -482,6 +463,27 @@ void Photino::GetResizable(bool* resizable)
 void Photino::GetIgnoreCertificateErrorsEnabled(bool* enabled)
 {
 	*enabled = this->_ignoreCertificateErrorsEnabled;
+}
+
+void Photino::GetFocused(bool* isFocused)
+{
+    if (!isFocused)
+        return;
+
+    if (!_window)
+    {
+        *isFocused = false;
+        return;
+    }
+
+    // A window is focused when it is BOTH:
+    //  - key window  (receiving keyboard input)
+    //  - the app is active (not in background)
+    bool focused =
+        [NSApp isActive] &&
+        [_window isKeyWindow];
+
+    *isFocused = focused;
 }
 
 unsigned int Photino::GetScreenDpi()
@@ -806,6 +808,25 @@ void Photino::SetZoom(int zoom)
 {
     CGFloat newZoom = zoom / 100.0;
 	[_webview setMagnification: newZoom];
+}
+
+void Photino::SetFocused()
+{
+     if (!_window) return;
+
+    // Bring the application to the foreground
+    [NSApp activateIgnoringOtherApps:YES];
+
+    // Ensure the window becomes the key window
+    [_window makeKeyAndOrderFront:_window];
+
+    // If for some reason it still doesn't get key (borderless windows),
+    // force it to become key.
+    if (![_window isKeyWindow])
+    {
+        [_window orderFrontRegardless];
+        [_window makeKeyWindow];
+    }
 }
 
 void EnsureInvoke(dispatch_block_t block)

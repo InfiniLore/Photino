@@ -1,0 +1,30 @@
+﻿// ---------------------------------------------------------------------------------------------------------------------
+// Imports
+// ---------------------------------------------------------------------------------------------------------------------
+using InfiniLore.InfiniFrame;
+using Tests.Shared;
+
+namespace Tests.InfiniFrame.WindowFunctionalities;
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Code
+// ---------------------------------------------------------------------------------------------------------------------
+public class FocusedTests {
+    [Test]
+    [DisplayName($"{nameof(FocusedTests)}.{nameof(Window)}")]   
+    // [SkipUtility.SkipOnMacOs]
+    // [SkipUtility.SkipOnLinux]
+    [NotInParallel(ParallelControl.InfiniFrame)]
+    public async Task Window() {
+        // Arrange
+        using var windowUtility = InfiniFrameWindowTestUtility.Create();
+        IInfiniFrameWindow window = windowUtility.Window;
+        
+        // Act
+        // await Task.Delay(10000); // Uncomment this if you want to manually check this, otherwise it will always be focused
+        window.SetFocused();
+
+        // Assert
+        await Assert.That(window.Focused).IsTrue();
+    }
+}

@@ -120,6 +120,9 @@ public static partial class InfiniFrameNative {
     
     [LibraryImport(DllName, EntryPoint = Photino_GetIconFileName, SetLastError = true, StringMarshalling = StringMarshalling.Utf16), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     internal static partial IntPtr GetIconFileName(IntPtr instance);
+
+    [LibraryImport(DllName, EntryPoint = InfiniFrame_GetFocused, SetLastError = true), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    internal static partial void GetFocused(IntPtr instance, [MarshalAs(UnmanagedType.Bool)] out bool isFocused);
     #endregion
 
     #region MARSHAL CALLS FROM Non-UI Thread to UI Thread
@@ -190,6 +193,9 @@ public static partial class InfiniFrameNative {
 
     [DllImport(DllName, EntryPoint = Photino_SetZoomEnabled, CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
     internal static extern void SetZoomEnabled(IntPtr instance, bool zoomEnabled);
+
+    [LibraryImport(DllName, EntryPoint = InfiniFrame_SetFocused, SetLastError = true), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+    internal static partial void SetFocused(IntPtr instance);
     #endregion
 
     #region Misc
@@ -211,9 +217,6 @@ public static partial class InfiniFrameNative {
 
     [LibraryImport(DllName, EntryPoint = Photino_WaitForExit, SetLastError = true), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
     internal static partial void WaitForExit(IntPtr instance);
-
-    [LibraryImport(DllName, EntryPoint = InfiniFrame_Focus, SetLastError = true), UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-    internal static partial void Focus(IntPtr instance);
     #endregion
 
     #region Dialog

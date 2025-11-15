@@ -29,6 +29,7 @@ public interface IInfiniFrameWindow : IInfiniFrameWindowBase {
     int ManagedThreadId { get; }
     Rectangle CachedPreFullScreenBounds { get; internal set; }
     Rectangle CachedPreMaximizedBounds { get; internal set; }
+    bool Focused { get; }
 
     void Invoke(Action workItem);
     void WaitForClose();

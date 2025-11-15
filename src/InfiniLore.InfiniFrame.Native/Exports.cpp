@@ -175,6 +175,11 @@ extern "C"
 	{
 		instance->GetZoom(zoom);
 	}
+    
+    EXPORTED void InfiniFrame_GetFocused(Photino* instance, bool* isFocused)
+	{
+	    instance->GetFocused(isFocused);
+	}
 
     EXPORTED AutoString Photino_GetIconFileName(Photino* instance)
 	{
@@ -350,9 +355,9 @@ extern "C"
 		instance->Invoke(callback);
 	}
 
-	EXPORTED void InfiniFrame_Focus(Photino* instance)
+	EXPORTED void InfiniFrame_SetFocused(Photino* instance)
 	{
-        instance->Focus();
+        instance->SetFocused();
 	}
 
     EXPORTED void InfiniWindowTests_NativeParametersReturnAsIs(const PhotinoInitParams* params, PhotinoInitParams** new_params)

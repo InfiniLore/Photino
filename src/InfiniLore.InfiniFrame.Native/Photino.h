@@ -250,7 +250,6 @@ public:
 	void Center();
 	void ClearBrowserAutoFill();
 	void Close();
-    void Focus();
 
 	void GetTransparentEnabled(bool *enabled);
 	void GetContextMenuEnabled(bool *enabled);
@@ -276,6 +275,7 @@ public:
 	void GetTopmost(bool *topmost);
 	void GetZoom(int *zoom);
 	void GetIgnoreCertificateErrorsEnabled(bool* enabled);
+    void GetFocused(bool *isFocused);
 
 	void NavigateToString(AutoString content);
 	void NavigateToUrl(AutoString url);
@@ -298,6 +298,7 @@ public:
 	void SetTitle(AutoString title);
 	void SetTopmost(bool topmost);
 	void SetZoom(int zoom);
+    void SetFocused();
 
 	void ShowNotification(AutoString title, AutoString message);
 	void WaitForExit();
