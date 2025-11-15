@@ -14,6 +14,7 @@
   </Folder>
   <Folder Name="/.dev-tools/github/">
     <File Path=".github\workflows\workflow-todo.yml" />
+    <File Path=".github/dependabot.yml" />
     <File Path=".github\workflows\onPullRequest-multiPlatformTesting.yml" />
     <File Path=".github\workflows\onPullRequest-pendingCheck.yml" />
     <File Path=".github\workflows\onRelease.yml" />
