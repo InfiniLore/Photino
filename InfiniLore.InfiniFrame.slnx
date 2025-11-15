@@ -4,7 +4,6 @@
     <File Path="InfiniLore.InfiniFrame.GitHubActions.slnf" />
     <File Path="README.md" />
     <File Path=".editorconfig" />
-    <File Path="Directory.Packages.props" />
     <File Path="global.json" />
     <File Path="InfiniLore.InfiniFrame.GitHubActions.Linux.slnf" />
     <File Path="InfiniLore.InfiniFrame.GitHubActions.Windows.slnf" />
@@ -41,6 +40,7 @@
     <Project Path="src\InfiniLore.InfiniFrame.Server\InfiniLore.InfiniFrame.Server.csproj" />
     <Project Path="src\InfiniLore.InfiniFrame.Shared\InfiniLore.InfiniFrame.Shared.csproj" />
     <Project Path="src\InfiniLore.InfiniFrame\InfiniLore.InfiniFrame.csproj" />
+    <File Path="Directory.Packages.props" />
     <File Path="src\Directory.Build.props" />
   </Folder>
   <Folder Name="/src/cpp/">
