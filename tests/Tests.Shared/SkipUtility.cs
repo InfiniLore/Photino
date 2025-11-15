@@ -8,6 +8,7 @@ namespace Tests.Shared;
 public static class SkipUtility {
     #region Reasons
     public const string LinuxMovement = "The current test environment does not properly support window moving";
+    public const string MacOsMainThreadIssue = "API misuse: setting the main menu on a non-main thread. Main menu contents should only be modified from the main thread";
     #endregion
 
     #region Attributes
