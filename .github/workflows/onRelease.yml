@@ -290,6 +290,7 @@ jobs:
                 with:
                     generate_release_notes: true
                     files: ./release/*.nupkg
+                    prerelease: ${{ contains(github.ref_name, 'preview') }}
         
             -   name: Push to NuGet
                 if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish_to_nuget)
