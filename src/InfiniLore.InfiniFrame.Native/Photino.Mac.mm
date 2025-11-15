@@ -362,6 +362,25 @@ void Photino::Close()
     }
 }
 
+void Photino::Focus()
+{
+     if (!_window) return;
+
+    // Bring the application to the foreground
+    [NSApp activateIgnoringOtherApps:YES];
+
+    // Ensure the window becomes the key window
+    [_window makeKeyAndOrderFront:_window];
+
+    // If for some reason it still doesn't get key (borderless windows),
+    // force it to become key.
+    if (![_window isKeyWindow])
+    {
+        [_window orderFrontRegardless];
+        [_window makeKeyWindow];
+    }
+}
+
 void Photino::GetTransparentEnabled(bool* enabled)
 {
     //! Not implemented (supported?) on macOS
